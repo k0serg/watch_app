@@ -1,8 +1,8 @@
-// script.js — Полная версия без import и data.js
+// script.js — Полная версия без импортов
 
 console.log("✅ script.js загружен");
 
-// Данные о часах (встроены прямо в скрипт)
+// === Данные о часах (встроены прямо в файл) ===
 const watches = [
   {
     id: 1,
@@ -27,18 +27,19 @@ const watches = [
   }
 ];
 
-// Подключаем Telegram WebApp
+// Подключаем Telegram
 const tg = window.Telegram?.WebApp || null;
 if (tg) tg.ready();
 
 let currentIndex = 0;
 
+// Функция отображения часов
 function showWatch(index) {
   const watchDiv = document.getElementById('watch');
   const watch = watches[index];
 
   if (!watchDiv) {
-    console.error('❌ Элемент #watch не найден');
+    console.error('❌ #watch не найден');
     return;
   }
   if (!watch) {
@@ -70,7 +71,7 @@ document.getElementById('buy')?.addEventListener('click', () => {
   const user = tg?.initDataUnsafe?.user;
 
   if (!user) {
-    alert('Не удалось получить данные. Откройте в Telegram.');
+    tg?.showAlert?.('Не удалось получить данные. Откройте в Telegram.');
     return;
   }
 
@@ -78,13 +79,12 @@ document.getElementById('buy')?.addEventListener('click', () => {
   const username = user.username ? `@${user.username}` : 'не указан';
 
   const message = `
-🔔 Заявка на покупку!
-⌚ Модель: ${selectedWatch.name}
-📝 Описание: ${selectedWatch.description}
-💰 Цена: ${selectedWatch.price}
-👤 Покупатель: ${name}
-📞 Telegram: ${username}
-⏰ Время: ${new Date().toLocaleString('ru-RU')}
+🔔 <b>Заявка на покупку</b>
+⌚ <b>Модель:</b> ${selectedWatch.name}
+💰 <b>Цена:</b> ${selectedWatch.price}
+👤 <b>Имя:</b> ${name}
+📞 <b>Telegram:</b> ${username}
+⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
   `.trim();
 
   // ⚠️ ЗАМЕНИ НА СВОЙ ТОКЕН И CHAT_ID
@@ -97,9 +97,7 @@ document.getElementById('buy')?.addEventListener('click', () => {
       parse_mode: 'HTML'
     })
   })
-  .then(() => {
-    tg?.showAlert?.('Спасибо! С вами свяжутся в Telegram.');
-  })
+  .then(() => tg?.showAlert?.('Спасибо! С вами свяжутся в Telegram.'))
   .catch(err => {
     console.error('Ошибка:', err);
     tg?.showAlert?.('Ошибка отправки. Напишите нам вручную.');

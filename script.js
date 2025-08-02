@@ -6,24 +6,24 @@ console.log("✅ script.js загружен");
 const watches = [
   {
     id: 1,
-    name: "Легендарная весна",
+    name: "Rolex Submariner",
     price: "120 000 ₽",
-    description: "Красивые женские часы.",
-    image: "https://www.tsedro.ru/images/slider/4.jpeg"
+    description: "Легендарные водонепроницаемые часы для дайвинга.",
+    image: "https://i.imgur.com/8VUwW.jpg"
   },
   {
     id: 2,
-    name: "Подводное царство",
+    name: "Omega Speedmaster",
     price: "95 000 ₽",
-    description: "Самые точные водонепроницаемые часы.",
-    image: "https://www.tsedro.ru/images/slider/2.jpeg"
+    description: "Часы, побывавшие на Луне.",
+    image: "https://i.imgur.com/5XaBZ.jpg"
   },
   {
     id: 3,
-    name: "Просто красивые часы",
+    name: "Apple Watch Ultra",
     price: "65 000 ₽",
-    description: "Офигенные часы для экстремалов.",
-    image: "https://www.tsedro.ru/images/slider/6.jpeg"
+    description: "Умные часы для экстремалов.",
+    image: "https://i.imgur.com/7YvEJ.jpg"
   }
 ];
 
